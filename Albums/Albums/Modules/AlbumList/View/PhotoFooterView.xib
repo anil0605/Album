@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoFooterView" id="U6b-Vx-4bR" customClass="PhotoFooterView" customModule="Albums" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IB7-Ox-4xJ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HgB-YJ-s4y">
+                            <rect key="frame" x="142" y="7" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="HgB-YJ-s4y" firstAttribute="centerY" secondItem="IB7-Ox-4xJ" secondAttribute="centerY" id="8ta-vW-bQg"/>
+                        <constraint firstItem="HgB-YJ-s4y" firstAttribute="centerX" secondItem="IB7-Ox-4xJ" secondAttribute="centerX" id="Z2O-R9-czj"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="IB7-Ox-4xJ" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="36L-bi-RRW"/>
+                <constraint firstItem="IB7-Ox-4xJ" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="4Mz-bR-nZG"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="IB7-Ox-4xJ" secondAttribute="trailing" id="FZ8-Ny-HYY"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="IB7-Ox-4xJ" secondAttribute="bottom" id="ZrP-gY-cYw"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+        </collectionReusableView>
+    </objects>
+</document>
