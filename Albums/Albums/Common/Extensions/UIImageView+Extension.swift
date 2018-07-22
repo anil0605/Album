@@ -15,18 +15,7 @@ let cache = NSCache<AnyObject, AnyObject>()
 extension UIImageView {
     
     func setImageOnItSelf(_ image: UIImage) {
-        //print("width \(image.size.width)")
-        //print("height \(image.size.height)")
-
-        if image.size.width > image.size.height {
-            //print("scaleAspectFit")
-            self.contentMode = .scaleToFill
-        } else {
-            //print("scaleAspectFill")
-            self.contentMode = .scaleToFill
-        }
         self.image = image
-        
     }
     
     func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {

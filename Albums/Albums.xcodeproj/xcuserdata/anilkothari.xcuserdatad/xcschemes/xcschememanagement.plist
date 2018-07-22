@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Albums-Stub.xcscheme</key>
+		<key>Albums.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>Albums.xcscheme</key>
+		<key>AlbumsStub.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
@@ -17,6 +17,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>461EAE7B21037DC50091F9E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>461EAE9A21037EF70091F9E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4635F4152100EFED00C071A7</key>
 		<dict>
 			<key>primary</key>

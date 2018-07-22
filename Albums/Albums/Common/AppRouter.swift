@@ -10,11 +10,11 @@ import UIKit
 
 class AppRouter {
     
-    private static let mainStoryBoardFileName = "Main"
+    private static let albumStoryBoard = "Album"
 
     // MARK: Main storyboard
     static var mainStoryboard: UIStoryboard {
-        return UIStoryboard (name: AppRouter.mainStoryBoardFileName, bundle: Bundle.main)
+        return UIStoryboard (name: AppRouter.albumStoryBoard, bundle: Bundle.main)
     }
     
 

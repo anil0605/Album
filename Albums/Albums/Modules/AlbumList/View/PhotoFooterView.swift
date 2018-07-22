@@ -9,10 +9,8 @@
 import UIKit
 
 class PhotoFooterView: UICollectionReusableView {
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
 }
