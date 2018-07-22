@@ -26,6 +26,11 @@
 *.sql
 *.sqlite
 
+# CurserState and Breakpoints
+######################
+*.xcbkptlist
+*.xcuserstate
+
 # OS generated files #
 ######################
 .DS_Store
