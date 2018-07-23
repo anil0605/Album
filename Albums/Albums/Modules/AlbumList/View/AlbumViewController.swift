@@ -149,7 +149,7 @@ extension AlbumViewController : UICollectionViewDelegateFlowLayout {
         let breachingPoint = totalContentScrollview - threshold
         let currentOffset = scrollView.contentOffset.y + scrollView.frame.size.height
         
-        if currentOffset > breachingPoint, isFetchingData == false  {
+        if currentOffset > breachingPoint ,breachingPoint > 0, isFetchingData == false  {
             isFetchingData = true
             presenter?.fetchAlbumData()
             collectionView.reloadData()

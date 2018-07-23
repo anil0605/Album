@@ -1,5 +1,5 @@
 //
-//  ImageDownloader.swift
+//  ImageDownloaderTest.swift
 //  AlbumsTests
 //
 //  Created by Anil Kothari on 22/07/18.

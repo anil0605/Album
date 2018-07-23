@@ -12,21 +12,21 @@ import XCTest
 class AlbumsTests: XCTestCase {
     // System under test is AlbumViewController
     var sut: AlbumViewController!
- 
-    private let eventListIdentifier = "EventListViewController"
-    
     
     
     override func setUp() {
         super.setUp()
         sut = AppRouter.albumListViewController
         AppRouter.assembleAlbumScreen(vc: sut)
+        
+        _ = sut.view
+
     }
     
     override func tearDown() {
         super.tearDown()
     }
-    
+  
     func testStoryboardIsNotNil(){
         let storyboard = AppRouter.mainStoryboard
         XCTAssertNotNil(storyboard)
@@ -60,5 +60,31 @@ class AlbumsTests: XCTestCase {
         XCTAssertTrue(sut.presenter!.interactor?.presenter === sut.presenter!)
     }
     
-
+    
+    func testIfDefaultCollectionViewFlowLayoutIsGrid(){
+        XCTAssertTrue(sut.collectionView.collectionViewLayout is GridLayout)
+    }
+    
+    func testIfPaginationIsDisabledDefault() {
+        XCTAssertTrue(sut.collectionView.isPagingEnabled == false)
+    }
+    
+    
+    func testCollectionItemCountAfterFirstCall(){
+        let promise = expectation(description: "Data Retrieved successfully")
+        XCTAssertTrue(self.sut.dataSource.count == 0)
+        
+        //Check isFetch is false
+        XCTAssertFalse(sut.isFetchingData)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+            if self.sut.dataSource.count == 10 {
+                promise.fulfill()
+            }else{
+                XCTFail("Data downloading failed.")
+            }
+        }
+        waitForExpectations(timeout: 15, handler: nil)
+    }
+    
 }

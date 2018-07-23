@@ -19,10 +19,11 @@ class AppRouter {
     
 
     // MARK: Album Tour View Controller
-    static var albumListViewController: AlbumViewController {
-        let albumListScreen = AppRouter.mainStoryboard.instantiateViewController(withIdentifier: AlbumViewController.className) as! AlbumViewController
-        AppRouter.assembleAlbumScreen(vc: albumListScreen)
-        return albumListScreen
+    static var albumListViewController: AlbumViewController? {
+        if let albumListScreen = AppRouter.mainStoryboard.instantiateViewController(withIdentifier: AlbumViewController.className) as? AlbumViewController {
+            return albumListScreen
+        }
+        return nil
     }
 
     // MARK: Assemble welcome tour module components

@@ -47,9 +47,7 @@ class DataOperation {
             
             completionHandler(data, error)
         }
-        
-        
-        
+                
         task.resume()
     }
 }
