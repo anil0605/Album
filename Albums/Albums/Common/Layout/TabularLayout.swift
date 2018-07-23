@@ -1,5 +1,5 @@
 //
-//  FullScreenLayout.swift
+//  TabularLayout.swift
 //  Albums
 //
 //  Created by Anil Kothari on 20/07/18.
