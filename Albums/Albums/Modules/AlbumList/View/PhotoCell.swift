@@ -40,8 +40,8 @@ class PhotoCell: UICollectionViewCell {
             original = frame
             UIView.beginAnimations(nil, context: nil)
             UIView.setAnimationDuration(0.1)
-            self.frame = largeFrame
-            self.fadeOut()
+            frame = largeFrame
+            fadeOut()
             UIView.commitAnimations()
         }
     }
@@ -51,8 +51,8 @@ class PhotoCell: UICollectionViewCell {
         photoDescriptionView.isHidden = true
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(0.1)
-        self.frame = original
-        self.fadeIn()
+        frame = original
+        fadeIn()
         UIView.commitAnimations()
     }
 

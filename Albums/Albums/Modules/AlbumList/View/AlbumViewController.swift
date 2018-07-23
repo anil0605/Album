@@ -43,19 +43,19 @@ class AlbumViewController: UIViewController {
     override func didReceiveMemoryWarning() {
     }
     
-    func setup(){
+    private func setup(){
         collectionView.isPagingEnabled = isFullScreenLayout
         self.collectionView.collectionViewLayout = gridLayout
     }
     
-    func displayAlertMessage(_ message: String) {
+    private func displayAlertMessage(_ message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(defaultAction)
         present(alertController, animated: true, completion: nil)
     }
     
-    func registerNib(){
+    private func registerNib(){
         collectionView.register(UINib(nibName: PhotoFooterView.className, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: PhotoFooterView.className)
     }
     
@@ -143,7 +143,7 @@ extension AlbumViewController : UICollectionViewDataSource {
 extension AlbumViewController : UICollectionViewDelegateFlowLayout {
     
     //Start the pagingation when 98% of the screen has been viewed
-    func scrollViewDidScroll(_ scrollView: UIScrollView)   {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool){
         let threshold : CGFloat = scrollView.frame.size.height * 0.02
         let totalContentScrollview : CGFloat = scrollView.contentSize.height
         let breachingPoint = totalContentScrollview - threshold
@@ -164,10 +164,12 @@ extension AlbumViewController : UICollectionViewDelegateFlowLayout {
 
 
 extension AlbumViewController : AlbumViewProtocol {
+    // To display alert message when the connection loaded data
     func showAlertMessage(_ message: String) {
         DispatchQueue.main.async {
             self.activityIndicatorView.isHidden = true
             self.displayAlertMessage(message)
+            
             // Reload collection view to limit the footer height
             self.footerHeight = 0
             self.collectionView.reloadData()
