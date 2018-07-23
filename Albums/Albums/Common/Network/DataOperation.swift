@@ -7,7 +7,7 @@
 //
 
 import Foundation
-public typealias CompletionHandler<T> = (Data, Error?) -> Void
+public typealias CompletionHandler<T> = (Data?, Error?) -> Void
 
 class DataOperation {
     
@@ -33,7 +33,6 @@ class DataOperation {
         // Set up the URL request
         
         guard let url = generateUrl() else {
-            //print("Error: cannot create URL")
             return
         }
         let urlRequest = URLRequest(url: url)
@@ -46,20 +45,9 @@ class DataOperation {
         let task = session.dataTask(with: urlRequest) {
             (data, response, error) in
             
-            //print(data!)
-            //print(response!)
-            //print(error ?? "NoErr")
-            // make sure we got data
-            guard let responseData = data else {
-                //print("Error: did not receive data")
-                return
-            }
-            
-            completionHandler(responseData, error)
+            completionHandler(data, error)
         }
-        
-        
-        
+                
         task.resume()
     }
 }

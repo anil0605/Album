@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "46537F3120FF1E77005C377B"
-               BuildableName = "Albums.app"
-               BlueprintName = "Albums"
+               BlueprintIdentifier = "461EAE9A21037EF70091F9E8"
+               BuildableName = "AlbumsStub.app"
+               BlueprintName = "AlbumsStub"
                ReferencedContainer = "container:Albums.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "46537F3120FF1E77005C377B"
-            BuildableName = "Albums.app"
-            BlueprintName = "Albums"
+            BlueprintIdentifier = "461EAE9A21037EF70091F9E8"
+            BuildableName = "AlbumsStub.app"
+            BlueprintName = "AlbumsStub"
             ReferencedContainer = "container:Albums.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "46537F3120FF1E77005C377B"
-            BuildableName = "Albums.app"
-            BlueprintName = "Albums"
+            BlueprintIdentifier = "461EAE9A21037EF70091F9E8"
+            BuildableName = "AlbumsStub.app"
+            BlueprintName = "AlbumsStub"
             ReferencedContainer = "container:Albums.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "46537F3120FF1E77005C377B"
-            BuildableName = "Albums.app"
-            BlueprintName = "Albums"
+            BlueprintIdentifier = "461EAE9A21037EF70091F9E8"
+            BuildableName = "AlbumsStub.app"
+            BlueprintName = "AlbumsStub"
             ReferencedContainer = "container:Albums.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

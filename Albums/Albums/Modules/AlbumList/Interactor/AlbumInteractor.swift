@@ -33,19 +33,24 @@ class AlbumInteractor: AlbumTourInteracterInputProtocol {
         
     }
     
+    func getStubFileName() -> String {
+        let stubFile = fileName + "_" + "\(pageCounter)"
+        return stubFile
+    }
+    
     func fetchAlbumData() {
-        
-        if let data = self.retrieveLocalJsonDataFromFile(fileName), let photoList = parseData(data) {
+        if let data = self.retrieveLocalJsonDataFromFile(getStubFileName()), let photoList = parseData(data) {
+            self.pageCounter += 1
             self.presenter?.retrievedPhotoList(data: photoList)
         }else{
             setDataOperationRequest()
             dataOperation.makeNetworkCallWith { [unowned self] (data, error) in
-                guard let _ = error else {
-                    self.presenter?.retrievedPhotoList(data: self.parseData(data)!)
-                    self.pageCounter += 1
+                guard let responseData = data, let albums = self.parseData(responseData) else {
+                    self.presenter?.showAlertMessage()
                     return
                 }
-               
+                self.pageCounter += 1
+                self.presenter?.retrievedPhotoList(data: albums)
             }
         }
         
@@ -59,7 +64,6 @@ class AlbumInteractor: AlbumTourInteracterInputProtocol {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             return data
         } catch {
-            //print("Error in reading local Data")
             return nil
         }
     }
@@ -71,7 +75,6 @@ class AlbumInteractor: AlbumTourInteracterInputProtocol {
             return list
         }
         catch  {
-            //print("error trying to convert data to JSON")
             return nil
         }
     }

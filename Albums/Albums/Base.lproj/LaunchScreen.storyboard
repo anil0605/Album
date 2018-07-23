@@ -24,20 +24,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Anil Kothari" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvZ-fA-hU1">
-                                <rect key="frame" x="20" y="601" width="335" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yvZ-fA-hU1" secondAttribute="trailing" constant="20" id="Car-vz-Yqj"/>
                             <constraint firstItem="R49-iO-KHa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="F5I-U9-qne"/>
                             <constraint firstItem="R49-iO-KHa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="JLm-na-Wjh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yvZ-fA-hU1" secondAttribute="bottom" constant="46" id="SwD-Eb-egD"/>
-                            <constraint firstItem="yvZ-fA-hU1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wrw-H7-gth"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
