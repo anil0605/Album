@@ -15,6 +15,7 @@ class DataOperation {
     var baseURL : String?
     var queryParam = [String: String]()
     
+    // generate the url based on the parameters passed by the application
     func generateUrl() -> URL? {
         guard let baseUrl = baseURL, baseUrl.count > 0 else {
             return nil
@@ -30,6 +31,7 @@ class DataOperation {
         return URL(string: String(fullUrl.dropLast()))
     }
     
+    //create network connection and retreive the data
     func makeNetworkCallWith(completionHandler: @escaping CompletionHandler<Any>) {
         // Set up the URL request
         
@@ -51,27 +53,5 @@ class DataOperation {
                 
         task.resume()
     }
-    
-    
-    func downloadedImageFrom(link: String, completionHandler: @escaping ImageCompletionHandler) {
-       
-        guard let encodedUrl = link.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed), let url = URL(string: encodedUrl)
-            else {
-                return
-            } 
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let data = data, error == nil,
-                let image = UIImage(data: data) else {
-                    completionHandler(false)
-                    return
-            }
-            DispatchQueue.main.async {
-                cache.setObject(image, forKey: url as AnyObject)
-                completionHandler(true)
-            }
-            }.resume()
-    }
+  
 }
