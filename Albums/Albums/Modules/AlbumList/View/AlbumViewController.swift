@@ -226,7 +226,7 @@ extension AlbumViewController: ImageCompletion {
     func setImageCompletionCounter(counter : Int) {
         DispatchQueue.main.async  {
             self.imageDownloadedCount += 1
-            self.totalDownloadedImages.text = "Total Images on Screen : \(self.imageDownloadedCount)"
+            self.totalDownloadedImages.text = "Image count : \(self.imageDownloadedCount)"
         }
     }
 
