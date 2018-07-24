@@ -33,7 +33,7 @@ extension AlbumPresenter: AlbumPresenterOutputProtocol {
     
     ///Error handling of the api's
     func showAlertMessage() {
-        let message = "Technical issue. Error in retrieving data."
+        let message = NSLocalizedString(AlbumString.NetworkAlertMessage.rawValue, comment: "")
         view?.showAlertMessage(message)
     }
 

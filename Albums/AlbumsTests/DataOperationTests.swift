@@ -36,10 +36,6 @@ class DataOperationTests: XCTestCase {
 
         XCTAssertEqual(dataOperation.generateUrl()?.absoluteString,"\(baseUrl)?page=1&client_id=\(clientId)")
     }
-    func testClassNameNotEqualToString(){
-        XCTAssertNotEqual(AlbumViewController.className, "ViewController")
-    }
-    
     
     override func tearDown() {
         super.tearDown()

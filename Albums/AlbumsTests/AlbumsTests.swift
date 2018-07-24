@@ -42,14 +42,14 @@ class AlbumsTests: XCTestCase {
     // If the api is down or the network connection or api is not responding in 15 seconds this test case will face.
     func testCollectionItemCountAfterFirstCall(){
         
-        let connectionTimeOutValue = 15
+        let connectionTimeOutValue = 5
         let promise = expectation(description: "Data Retrieved successfully")
         XCTAssertTrue(self.sut.dataSource.count == 0)
         
         //Check isFetch is false
         XCTAssertFalse(sut.isFetchingData)
         // Checking after connectionTimeOutValue from the point api is being hit
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             if self.sut.dataSource.count == 10 {
                 promise.fulfill()
             }else{

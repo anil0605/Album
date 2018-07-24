@@ -61,8 +61,10 @@ class AlbumViewController: UIViewController {
     }
     
     private func displayAlertMessage(_ message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let alertTitle = NSLocalizedString(AlbumString.NetworkAlertTitle.rawValue, comment: "")
+        let okTitle = NSLocalizedString(AlbumString.NetworkAlertOkButtonTitle.rawValue, comment: "")
+        let alertController = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: okTitle, style: .default, handler: nil)
             alertController.addAction(defaultAction)
         present(alertController, animated: true, completion: nil)
     }
@@ -223,10 +225,11 @@ extension AlbumViewController : AlbumViewProtocol {
 
 extension AlbumViewController: ImageCompletion {
     
-    func setImageCompletionCounter(counter : Int) {
-        DispatchQueue.main.async  {
-            self.imageDownloadedCount += 1
-            self.totalDownloadedImages.text = "Image count : \(self.imageDownloadedCount)"
+    func setImageCompletionCounter(counter : Int) { 
+        let imageCountText = NSLocalizedString(AlbumString.TitleCountStaticText.rawValue, comment: "")
+        imageDownloadedCount += 1
+        DispatchQueue.main.async {
+            self.totalDownloadedImages.text = "\(imageCountText) \(self.imageDownloadedCount)"
         }
     }
 

@@ -37,16 +37,17 @@ class PhotoCell: UICollectionViewCell {
     }
     
     func setDetails(_ user : User?) {
-        var authorName = "Author : "
-        authorName += user?.username ?? "N/A"
+        let dataNotAvailable = NSLocalizedString(AlbumString.TitleDataNotAvailableStaticText.rawValue, comment: "")
+        var authorName = NSLocalizedString(AlbumString.AuthorNameStaticText.rawValue, comment: "")
+        authorName += user?.username ?? dataNotAvailable
         name.text = authorName
         
-        var locationName = "Location : "
-        locationName += user?.location ?? "N/A"
+        var locationName = NSLocalizedString(AlbumString.ImageLocationStaticText.rawValue, comment: "")
+        locationName += user?.location ?? dataNotAvailable
         location.text = locationName
         
-        var authorBio = "Biography : "
-        authorBio += user?.bio ?? "N/A"
+        var authorBio = NSLocalizedString(AlbumString.AuthorBiographyStaticText.rawValue, comment: "")
+        authorBio += user?.bio ?? dataNotAvailable
         biography.text = authorBio
     }
     

@@ -52,6 +52,10 @@
 		46A24B8121005BE900BA55DB /* AlbumWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A24B7B21005BE900BA55DB /* AlbumWireFrame.swift */; };
 		46A24B8321005F1B00BA55DB /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A24B8221005F1B00BA55DB /* AppRouter.swift */; };
 		46A24B8621006DF700BA55DB /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A24B8521006DF700BA55DB /* NSObject+Extension.swift */; };
+		46E452EA21077B3100D8A021 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E452E921077B3000D8A021 /* StringConstant.swift */; };
+		46E452EB21077B3100D8A021 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E452E921077B3000D8A021 /* StringConstant.swift */; };
+		46E452EC2107817C00D8A021 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46E452EF2107817C00D8A021 /* Localizable.strings */; };
+		46E452ED2107817C00D8A021 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46E452EF2107817C00D8A021 /* Localizable.strings */; };
 		46E4FDFC2101AF1A000B5AB9 /* PhotoFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46E4FDFA2101AF19000B5AB9 /* PhotoFooterView.xib */; };
 		46E4FDFE2101AF1A000B5AB9 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E4FDFB2101AF19000B5AB9 /* Album.storyboard */; };
 		46E4FE022101B190000B5AB9 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E4FE012101B190000B5AB9 /* GridLayout.swift */; };
@@ -107,6 +111,8 @@
 		46A24B7B21005BE900BA55DB /* AlbumWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumWireFrame.swift; sourceTree = "<group>"; };
 		46A24B8221005F1B00BA55DB /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		46A24B8521006DF700BA55DB /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		46E452E921077B3000D8A021 /* StringConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstant.swift; sourceTree = "<group>"; };
+		46E452F0210781BE00D8A021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		46E4FDFA2101AF19000B5AB9 /* PhotoFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoFooterView.xib; sourceTree = "<group>"; };
 		46E4FDFB2101AF19000B5AB9 /* Album.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
 		46E4FE012101B190000B5AB9 /* GridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
@@ -197,6 +203,7 @@
 		46537F3420FF1E77005C377B /* Albums */ = {
 			isa = PBXGroup;
 			children = (
+				46E452E5210778AB00D8A021 /* Localization */,
 				4635F401210074CB00C071A7 /* AppDelegate */,
 				46A24B6E21005BE900BA55DB /* Modules */,
 				46A24B6B21005A8500BA55DB /* Common */,
@@ -309,6 +316,15 @@
 				461EAE75210370EE0091F9E8 /* UIVIew+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		46E452E5210778AB00D8A021 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				46E452EF2107817C00D8A021 /* Localizable.strings */,
+				46E452E921077B3000D8A021 /* StringConstant.swift */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		46E4FDF92101AF19000B5AB9 /* StoryBoard:Xib */ = {
@@ -472,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				461EAEBA210380D30091F9E8 /* UserList_1.json in Resources */,
+				46E452ED2107817C00D8A021 /* Localizable.strings in Resources */,
 				461EAEAF21037EF70091F9E8 /* Album.storyboard in Resources */,
 				461EAEB021037EF70091F9E8 /* LaunchScreen.storyboard in Resources */,
 				461EAEB121037EF70091F9E8 /* Assets.xcassets in Resources */,
@@ -484,6 +501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46E4FDFE2101AF1A000B5AB9 /* Album.storyboard in Resources */,
+				46E452EC2107817C00D8A021 /* Localizable.strings in Resources */,
 				46537F4020FF1E79005C377B /* LaunchScreen.storyboard in Resources */,
 				46537F3D20FF1E79005C377B /* Assets.xcassets in Resources */,
 				46E4FDFC2101AF1A000B5AB9 /* PhotoFooterView.xib in Resources */,
@@ -511,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E452EB21077B3100D8A021 /* StringConstant.swift in Sources */,
 				461EAE9C21037EF70091F9E8 /* AppDelegate+Extension.swift in Sources */,
 				461EAE9D21037EF70091F9E8 /* AlbumProtocol.swift in Sources */,
 				461EAE9E21037EF70091F9E8 /* TabularLayout.swift in Sources */,
@@ -535,6 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E452EA21077B3100D8A021 /* StringConstant.swift in Sources */,
 				4635F405210074E700C071A7 /* AppDelegate+Extension.swift in Sources */,
 				46A24B7C21005BE900BA55DB /* AlbumProtocol.swift in Sources */,
 				46E4FE052101B398000B5AB9 /* TabularLayout.swift in Sources */,
@@ -600,6 +620,14 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		46E452EF2107817C00D8A021 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46E452F0210781BE00D8A021 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -639,6 +667,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -699,6 +728,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -852,7 +882,7 @@
 				461EAEB521037EF70091F9E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		46537F2D20FF1E77005C377B /* Build configuration list for PBXProject "Albums" */ = {
 			isa = XCConfigurationList;
@@ -861,7 +891,7 @@
 				46537F4320FF1E79005C377B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		46537F4420FF1E79005C377B /* Build configuration list for PBXNativeTarget "Albums" */ = {
 			isa = XCConfigurationList;
@@ -870,7 +900,7 @@
 				46537F4620FF1E79005C377B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4654E2F42104BA3E0035E806 /* Build configuration list for PBXNativeTarget "AlbumsUITests" */ = {
 			isa = XCConfigurationList;
@@ -879,7 +909,7 @@
 				4654E2F62104BA3E0035E806 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		46F27A422104558E006B878A /* Build configuration list for PBXNativeTarget "AlbumsTests" */ = {
 			isa = XCConfigurationList;
@@ -888,7 +918,7 @@
 				46F27A412104558E006B878A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
