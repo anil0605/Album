@@ -24,6 +24,9 @@ class AlbumInteractor: AlbumTourInteracterInputProtocol {
     private let clientId = "b590310bd7b4a24939406f852e42dd9b966fa54e261dd5fdd9ce106b8dccad3a"
     private let dataFormat = "json"
     private let fileName = "UserList"
+    
+    
+    var urlDownloadingInProgress = [String]()
 
     // Set the data opertion object ( network request)
     func setDataOperationRequest() {
@@ -55,8 +58,9 @@ class AlbumInteractor: AlbumTourInteracterInputProtocol {
                 self.presenter?.retrievedPhotoList(data: albums)
             }
         }
-        
     }
+    
+  
     
     private func retrieveLocalJsonDataFromFile(_ filename: String) -> Data?{
         guard let path = Bundle.main.path(forResource: filename, ofType: dataFormat) else {

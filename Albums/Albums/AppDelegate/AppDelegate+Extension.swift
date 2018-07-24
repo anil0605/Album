@@ -8,6 +8,8 @@
 
 import UIKit
 
+let cache = NSCache<AnyObject, AnyObject>()
+
 extension AppDelegate {
     
     func loadAlbumScreen() -> UIViewController {

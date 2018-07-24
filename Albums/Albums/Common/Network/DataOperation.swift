@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 public typealias CompletionHandler<T> = (Data?, Error?) -> Void
 
 class DataOperation {
@@ -49,5 +50,28 @@ class DataOperation {
         }
                 
         task.resume()
+    }
+    
+    
+    func downloadedImageFrom(link: String, completionHandler: @escaping ImageCompletionHandler) {
+       
+        guard let encodedUrl = link.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed), let url = URL(string: encodedUrl)
+            else {
+                return
+            } 
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let data = data, error == nil,
+                let image = UIImage(data: data) else {
+                    completionHandler(false)
+                    return
+            }
+            DispatchQueue.main.async {
+                cache.setObject(image, forKey: url as AnyObject)
+                completionHandler(true)
+            }
+            }.resume()
     }
 }

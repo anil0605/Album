@@ -24,23 +24,22 @@ class ImageDownloader: XCTestCase {
     
     func testIfImageDownloadedSuccessfully(){
         cache.removeAllObjects()
-        imageView.downloadedFrom(link: url)
         
         let promise = expectation(description: "Image Downloaded Successfully")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
-            if self.imageView.image != nil {
+
+        imageView.downloadedFrom(link: self.url) { (sucess) in
+            if sucess {
                 promise.fulfill()
                 
-                // Now it will pull from cache and immediately shown on screen
                 let newImageView = UIImageView()
-                newImageView.downloadedFrom(link: self.url)
+                newImageView.downloadedFrom(link: self.url, completionHandler: { (sucess) in
+                })
                 XCTAssertNotNil(newImageView.image)
-            }else{
-                XCTFail("Image downloading failed.")
             }
         }
+        
         waitForExpectations(timeout: 15, handler: nil)
+        
     }
     
     override func tearDown() {

@@ -16,13 +16,13 @@ class ViewAnimationTests: XCTestCase {
         super.setUp()
     }
     
-    func testView(){
+    func testViewAlphaToMaxValue(){
         let view = UIView()
         view.fadeIn()
         XCTAssertEqual(view.alpha, 1.0)
     }
     
-    func testView1(){
+    func testViewAlphaToMinValue(){
         let view = UIView()
         view.fadeOut()
         XCTAssertEqual(view.alpha, 0.0)

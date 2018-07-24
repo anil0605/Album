@@ -8,6 +8,8 @@
 
 import XCTest
 
+ // The UI test cases will test the AlbumViewController screen with layout's being configured correctly.
+
 class AlbumsUITests: XCTestCase {
         
     override func setUp() {
@@ -28,41 +30,41 @@ class AlbumsUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    
-    func testCollectionViewDataExists() {
-        
-        let collectionViewsQuery = XCUIApplication().collectionViews
-        collectionViewsQuery.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
-        
-    }
-    
-    func testCheckLayouts() {
-        let collectionViewsQuery = XCUIApplication().collectionViews
-        collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
-        
-        let element = collectionViewsQuery.cells.children(matching: .other).element
-        element.children(matching: .other).element.tap()
-        
-        let element2 = collectionViewsQuery.children(matching: .cell).element(boundBy: 2).children(matching: .other).element
-        element2.tap()
-        
-      
-        element.swipeLeft()
-        element.swipeLeft()
-        element.swipeRight()
-        element.swipeRight()
-
-    }
-    
-    func testOrientation(){
-        
+    // To test the close button is present on the image detail screen
+    func testCloseButtonPresent(){
         let app = XCUIApplication()
-        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .collectionView).element.swipeRight()
+        app.collectionViews.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
+        
+        let button = app.buttons["Button"]
+        XCTAssertTrue(button.exists)
+    }
+    
+    //To check total images count label is present on the screen
+    func testTotalImagePresentIdentifier(){
+        let app = XCUIApplication()
+        XCTAssertTrue(app.staticTexts["totalImagesCount"].exists)
+    }
+    
+    
+    // To test the data is being present in the test cases.
+    func testCollectionViewDataExists() {
+        let collectionViewsQuery = XCUIApplication().collectionViews
+        let element = collectionViewsQuery.children(matching: .cell).element(boundBy: 0).children(matching: .other).element
+        
+        XCTAssertTrue(element.exists)
+        XCTAssertNotNil(element)
+        element.tap()
+    }
+    
+    // To test the orientation of the device is being present in both the directions.
+    func testOrientation(){
+        let app = XCUIApplication()
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .collectionView).element
+        
+        XCTAssertTrue(element.exists)
+        XCTAssertNotNil(element)
+        
+        element.swipeRight()
         
         let collectionViewsQuery = app.collectionViews
         collectionViewsQuery.children(matching: .cell).element(boundBy: 5).children(matching: .other).element.tap()
@@ -74,10 +76,11 @@ class AlbumsUITests: XCTestCase {
 
     }
     
+    // To test the collection view is being able to scrolled and item from the third page is being able to tapped.
     func testScrollingCollectionView(){
-        
         let app = XCUIApplication()
         let collectionView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .collectionView).element
+        
         collectionView.swipeUp()
         collectionView.swipeUp()
         collectionView.swipeUp()
@@ -88,7 +91,7 @@ class AlbumsUITests: XCTestCase {
         
     }
     
-    
+  
     
     
 }

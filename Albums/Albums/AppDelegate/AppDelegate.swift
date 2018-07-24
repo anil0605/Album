@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
         
+        cache.removeAllObjects()
         // initialise root view controller to splash
         self.window?.rootViewController = loadAlbumScreen()
         

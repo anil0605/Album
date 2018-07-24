@@ -19,17 +19,35 @@ class PhotoCell: UICollectionViewCell {
     var isLarge = false
     var original : CGRect = CGRect.zero
     
+    weak var delegate: ImageCompletion?
+    
     func setPhotoCellWith(model: AlbumModel, showPhotoDescription: Bool = false){
-        if let url = model.urlList?.thumbUrl, !url.isEmpty {
-            imageView.downloadedFrom(link: url)
-        }
-        if let user = model.user {
-            name.text = user.username ?? ""
-            location.text = user.location ?? ""
-            biography.text = user.bio ?? ""
-        }
         
         photoDescriptionView.isHidden = !showPhotoDescription
+        
+        setDetails(model.user)
+        
+        if let url = model.urlList?.thumbUrl, !url.isEmpty, let linkUrl = URL(string: url) {
+            imageView.downloadedFrom(url: linkUrl) { (sucess) in
+                if sucess {
+                    self.delegate?.setImageCompletionCounter(counter: 0)
+                }
+            }
+        } 
+    }
+    
+    func setDetails(_ user : User?) {
+        var authorName = "Author : "
+        authorName += user?.username ?? "N/A"
+        name.text = authorName
+        
+        var locationName = "Location : "
+        locationName += user?.location ?? "N/A"
+        location.text = locationName
+        
+        var authorBio = "Biography : "
+        authorBio += user?.bio ?? "N/A"
+        biography.text = authorBio
     }
     
     func makeFull() {
@@ -57,6 +75,7 @@ class PhotoCell: UICollectionViewCell {
     }
 
     override func prepareForReuse() {
+        super.prepareForReuse()
         imageView.image = nil
     }
     

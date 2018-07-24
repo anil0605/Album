@@ -8,6 +8,11 @@
 
 import UIKit
 
+
+protocol ImageCompletion: class  {
+    func setImageCompletionCounter(counter : Int)
+}
+
 /**
  AlbumViewController shows the random photos data in collection view.
  */
@@ -16,6 +21,8 @@ class AlbumViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicatorView: UIView!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var totalDownloadedImages: UILabel!
 
     var presenter: AlbumPresenter?
 
@@ -33,6 +40,8 @@ class AlbumViewController: UIViewController {
         }
     }
     
+    var currentIndexPath = IndexPath(row: 0, section: 1)
+    var imageDownloadedCount = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -43,6 +52,9 @@ class AlbumViewController: UIViewController {
     override func didReceiveMemoryWarning() {
     }
     
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        layoutChangeWithAnimation(collectionView, currentIndexPath)
+    }
     private func setup(){
         collectionView.isPagingEnabled = isFullScreenLayout
         self.collectionView.collectionViewLayout = gridLayout
@@ -59,6 +71,8 @@ class AlbumViewController: UIViewController {
         collectionView.register(UINib(nibName: PhotoFooterView.className, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: PhotoFooterView.className)
     }
     
+    
+
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -87,17 +101,16 @@ extension AlbumViewController: UICollectionViewDelegate {
         return layout
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+    fileprivate func layoutChangeWithAnimation(_ collectionView: UICollectionView, _ indexPath: IndexPath) {
         // To set up the new layout
         let layout = getNewLayout(collectionView, indexPath)
         collectionView.isPagingEnabled = !isFullScreenLayout
-
+        
         // Animate cell as per layout
         if let cell = collectionView.cellForItem(at: indexPath) as? PhotoCell{
             isFullScreenLayout ?  cell.makeSmall() : cell.makeFull()
         }
-
+        
         // To animate the collection view from completely invisible to visible in 0.5 seconds
         collectionView.fadeOut(duration: 0.0)
         collectionView.fadeIn(duration: 0.5)
@@ -105,12 +118,21 @@ extension AlbumViewController: UICollectionViewDelegate {
         // To change layout the collection view
         collectionView.collectionViewLayout.invalidateLayout()
         collectionView.setCollectionViewLayout(layout, animated: false)
- 
+        
         isFullScreenLayout = !isFullScreenLayout
         
         // To reload the cell with new sizes now
         collectionView.reloadData()
-
+        
+        totalDownloadedImages.isHidden = isFullScreenLayout
+        closeButton.isHidden = !isFullScreenLayout
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if !isFullScreenLayout {
+            layoutChangeWithAnimation(collectionView, indexPath)
+        }
     }
 }
 
@@ -125,7 +147,13 @@ extension AlbumViewController : UICollectionViewDataSource {
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: PhotoCell.className, for: indexPath) as! PhotoCell
-        cell.setPhotoCellWith(model: dataSource[indexPath.row], showPhotoDescription: isFullScreenLayout)
+        cell.delegate = self
+        
+        let model = dataSource[indexPath.row]
+        cell.setPhotoCellWith(model: model, showPhotoDescription: isFullScreenLayout)
+        
+        currentIndexPath = indexPath
+        
         return cell
     }
     
@@ -143,7 +171,7 @@ extension AlbumViewController : UICollectionViewDataSource {
 extension AlbumViewController : UICollectionViewDelegateFlowLayout {
     
     //Start the pagingation when 98% of the screen has been viewed
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool){
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let threshold : CGFloat = scrollView.frame.size.height * 0.02
         let totalContentScrollview : CGFloat = scrollView.contentSize.height
         let breachingPoint = totalContentScrollview - threshold
@@ -160,6 +188,7 @@ extension AlbumViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
          return CGSize(width: collectionView.bounds.size.width, height: footerHeight)
     }
+    
 }
 
 
@@ -188,4 +217,18 @@ extension AlbumViewController : AlbumViewProtocol {
             self.isFetchingData = false
         }
     }
+    
+   
 }
+
+extension AlbumViewController: ImageCompletion {
+    
+    func setImageCompletionCounter(counter : Int) {
+        DispatchQueue.main.async  {
+            self.imageDownloadedCount += 1
+            self.totalDownloadedImages.text = "Total Images on Screen : \(self.imageDownloadedCount)"
+        }
+    }
+
+}
+ 

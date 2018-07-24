@@ -25,6 +25,7 @@ class AlbumPresenter: AlbumPresenterProtocol {
 }
 
 extension AlbumPresenter: AlbumPresenterOutputProtocol {
+    
     func retrievedPhotoList(data: [AlbumModel]) {
         albumData += data
         view?.showPhotos(list: albumData)
