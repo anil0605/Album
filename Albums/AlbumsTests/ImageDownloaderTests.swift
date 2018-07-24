@@ -31,10 +31,12 @@ class ImageDownloader: XCTestCase {
             if sucess {
                 promise.fulfill()
                 
-                let newImageView = UIImageView()
-                newImageView.downloadedFrom(link: self.url, completionHandler: { (sucess) in
-                })
-                XCTAssertNotNil(newImageView.image)
+                DispatchQueue.main.async {
+                    let newImageView = UIImageView()
+                    newImageView.downloadedFrom(link: self.url, completionHandler: { (sucess) in
+                    })
+                    XCTAssertNotNil(newImageView.image)
+                }
             }
         }
         

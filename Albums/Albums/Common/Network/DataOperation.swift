@@ -44,30 +44,38 @@ class DataOperation {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         
-        // make the request
-        let task = session.dataTask(with: urlRequest) {
-            (data, response, error) in
-            
-            completionHandler(data, error)
-        }
-                
-        task.resume()
-    }
-    
-    
-    
-    public static func downloadedTaskFrom(url: URL, completionHandler: @escaping CompletionHandler) {
+        let queueIdentifier = "com.loblaw.albumData"
+        let backgroundQueue = DispatchQueue(label: queueIdentifier, qos: DispatchQoS.background)
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let data = data, error == nil
-                  else {
-                    completionHandler(nil, error)
-                    return
+        backgroundQueue.async {
+            // make the request
+            let task = session.dataTask(with: urlRequest) {
+                (data, response, error) in
+                
+                completionHandler(data, error)
             }
-                completionHandler(data, nil)
-             }.resume()
+            
+            task.resume()
+        }
+        
     }
-  
+    
+    //create download task connection in background queue and return data back
+    public static func downloadedTaskFrom(url: URL, completionHandler: @escaping CompletionHandler) {
+        let queueIdentifier = "com.loblaw.albumImage"
+        let backgroundQueue = DispatchQueue(label: queueIdentifier, qos: DispatchQoS.background)
+        
+        backgroundQueue.async {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard
+                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                    let data = data, error == nil
+                    else {
+                        completionHandler(nil, error)
+                        return
+                }
+                completionHandler(data, nil)
+                }.resume()
+        }
+    }
 }
