@@ -40,7 +40,7 @@ class ImageDownloader: XCTestCase {
             }
         }
         
-        waitForExpectations(timeout: 15, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
         
     }
     
