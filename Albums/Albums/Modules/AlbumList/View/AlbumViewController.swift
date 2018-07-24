@@ -226,9 +226,11 @@ extension AlbumViewController : AlbumViewProtocol {
 extension AlbumViewController: ImageCompletion {
     
     func setImageCompletionCounter(counter : Int) { 
-            let imageCountText = NSLocalizedString(AlbumString.TitleCountStaticText.rawValue, comment: "")
-            imageDownloadedCount += 1
-            totalDownloadedImages.text = "\(imageCountText) \(self.imageDownloadedCount)"
+        let imageCountText = NSLocalizedString(AlbumString.TitleCountStaticText.rawValue, comment: "")
+        imageDownloadedCount += 1
+        DispatchQueue.main.async {
+            self.totalDownloadedImages.text = "\(imageCountText) \(self.imageDownloadedCount)"
+        }
     }
 
 }

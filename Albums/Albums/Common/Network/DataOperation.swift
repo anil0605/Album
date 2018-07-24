@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-public typealias CompletionHandler<T> = (Data?, Error?) -> Void
+public typealias CompletionHandler = (Data?, Error?) -> Void
 
 class DataOperation {
     
@@ -16,7 +16,7 @@ class DataOperation {
     var queryParam = [String: String]()
     
     // generate the url based on the parameters passed by the application
-    func generateUrl() -> URL? {
+    public func generateUrl() -> URL? {
         guard let baseUrl = baseURL, baseUrl.count > 0 else {
             return nil
         }
@@ -32,7 +32,7 @@ class DataOperation {
     }
     
     //create network connection and retreive the data
-    func makeNetworkCallWith(completionHandler: @escaping CompletionHandler<Any>) {
+    public func makeNetworkCallWith(completionHandler: @escaping CompletionHandler) {
         // Set up the URL request
         
         guard let url = generateUrl() else {
@@ -52,6 +52,22 @@ class DataOperation {
         }
                 
         task.resume()
+    }
+    
+    
+    
+    public static func downloadedTaskFrom(url: URL, completionHandler: @escaping CompletionHandler) {
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let data = data, error == nil
+                  else {
+                    completionHandler(nil, error)
+                    return
+            }
+                completionHandler(data, nil)
+             }.resume()
     }
   
 }
