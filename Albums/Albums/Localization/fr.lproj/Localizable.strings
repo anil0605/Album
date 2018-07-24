@@ -1,0 +1,16 @@
+/* 
+  Localization.string.strings
+  Albums
+
+  Created by Anil Kothari on 24/07/18.
+  Copyright © 2018 Anil Kothari. All rights reserved.
+*/
+
+"Network_Alert_title" = "Error";
+"Network_Alert_button_ok" = "OK";
+"Network_Alert_message" = "Technical issue. Error in retrieving data.";
+"Album_title_image_count" = "Image count : ";
+"Album_title_author_name" = "Author : ";
+"Album_title_auther_biography" = "Biography : ";
+"Album_title_image_location" = "Location : ";
+"Album_title_data_not_available" = "N/A";
