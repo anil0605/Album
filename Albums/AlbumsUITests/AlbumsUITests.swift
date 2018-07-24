@@ -81,13 +81,17 @@ class AlbumsUITests: XCTestCase {
         let app = XCUIApplication()
         let collectionView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .collectionView).element
         
+        XCTAssertTrue(collectionView.exists)
+
         collectionView.swipeUp()
         collectionView.swipeUp()
         collectionView.swipeUp()
         
         let collectionViewsQuery = app.collectionViews
         collectionViewsQuery.children(matching: .cell).element(boundBy: 3).children(matching: .other).element.tap()
-        collectionViewsQuery.cells.children(matching: .other).element.tap()
+        let element = collectionViewsQuery.cells.children(matching: .other).element
+        XCTAssertTrue(element.exists)
+        element.tap()
         
     }
     
