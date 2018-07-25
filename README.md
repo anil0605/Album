@@ -35,7 +35,7 @@ Both Grid and Tabular layouts are also present in the common folder so that othe
 ## Requirements
 
 - iOS 10.0+
-- Xcode 10.0+
+- Xcode 8.0+
 - Swift 4.1+
 
 ## Device
